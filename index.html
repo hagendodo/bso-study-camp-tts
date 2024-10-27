@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TTS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .header {
+        background: linear-gradient(45deg, #2b90d8, #233eac);
+        margin: 0;
+        padding: 1% 2% 1% 5%;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: 96.2vh;
+      }
+
+      .playnow {
+        padding: 20px;
+        background-color: #fff;
+        color: #434343;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 20pt;
+        text-decoration: none;
+      }
+
+      .playnow:hover {
+        padding: 20px;
+        background-color: #233eac;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 20pt;
+      }
+
+      @keyframes tiltFade {
+        0% {
+          transform: rotate(0deg);
+          opacity: 0;
+        }
+        25% {
+          transform: rotate(10deg);
+          opacity: 1;
+        }
+        50% {
+          transform: rotate(-10deg);
+          opacity: 1;
+        }
+        75% {
+          transform: rotate(10deg);
+          opacity: 1;
+        }
+        100% {
+          transform: rotate(0deg);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body style="padding: 0; margin: 0">
+    <header class="header">
+      <nav>
+        <h1>
+          <a style="text-decoration: none; color: #fff" href="index.html"
+            >Crossword</a
+          >
+        </h1>
+      </nav>
+      <section style="display: flex; margin-top: 50px">
+        <div>
+          <h1
+            style="
+              margin-bottom: 0;
+              padding-bottom: 0;
+              font-size: 60pt;
+              margin-top: 20px;
+            "
+          >
+            Teka Teki Silang Informatika
+          </h1>
+          <p
+            style="
+              padding-top: 5px;
+              margin-top: 0;
+              width: 50%;
+              margin-bottom: 50px;
+            "
+          >
+            Teka teki silang ini dibuat untuk mengasah kemampuan berpikir dan
+            mengingat kata-kata yang ada di dalamnya. Semoga bermanfaat.
+          </p>
+          <a href="tts.html" class="playnow">Mainkan Sekarang</a>
+        </div>
+        <div>
+          <img
+            src="crossword.png"
+            alt="crossword"
+            style="
+              width: 70%;
+              margin-top: 50px;
+              animation: tiltFade 4s ease-in-out infinite;
+            "
+          />
+        </div>
+      </section>
+    </header>
+  </body>
+</html>

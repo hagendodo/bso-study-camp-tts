@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TTS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f6f6f6;
+        font-family: "Poppins", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      td input {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+
+      td label {
+        position: absolute;
+        padding: 3px;
+      }
+
+      .correct {
+        background-color: green;
+      }
+
+      .wrong {
+        background-color: red;
+      }
+
+      .button_cek_jawaban {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: rgb(22, 121, 179);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+      }
+
+      button {
+        background-color: #0039c7;
+        color: #fff;
+        border: 1px #fff solid;
+        border-radius: 5px;
+        padding: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #fff;
+        color: #282828;
+      }
+
+      @keyframes slideFade {
+        0% {
+          transform: translateY(-10px);
+          opacity: 0;
+        }
+        50% {
+          transform: translateY(10px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10px);
+          opacity: 0;
+        }
+      }
+
+      .animated-image {
+        animation: slideFade 3s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body style="padding: 0; margin: 0">
+    <div
+      style="
+        background: linear-gradient(45deg, #0039c7, #1c8eeb);
+        color: #fff;
+        padding: 1% 1.5%;
+        min-height: 97vh;
+      "
+    >
+      <div style="display: flex; justify-content: space-between">
+        <div>
+          <h1>LOGO TTS</h1>
+        </div>
+        <div style="padding-top: 30px">
+          <button>Home</button>
+          <button>Game</button>
+          <button>About</button>
+          <button>APAWEH</button>
+        </div>
+        <div style="padding-top: 30px">
+          <button>TOMBOL KANAN</button>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center; margin: 80px 0">
+        <img
+          src="crossword.png"
+          alt="GAMBAR HEADER"
+          class="animated-image"
+          style="width: 30%"
+        />
+      </div>
+    </div>
+    <table>
+      <!-- BARIS 1-->
+      <tr>
+        <td>
+          <label>1</label>
+          <input id="1_1" type="text" maxlength="1" />
+        </td>
+        <td>
+          <input id="1_2" type="text" maxlength="1" />
+        </td>
+        <td>
+          <label>2</label>
+          <input id="1_3" type="text" maxlength="1" />
+        </td>
+        <td>
+          <input id="1_4" type="text" maxlength="1" />
+        </td>
+        <td>
+          <input id="1_5" type="text" maxlength="1" />
+        </td>
+      </tr>
+      <!-- BARIS 2-->
+      <tr>
+        <td>
+          <input id="2_1" type="text" maxlength="1" />
+        </td>
+        <td></td>
+        <td>
+          <input id="2_3" type="text" maxlength="1" />
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- BARIS 3-->
+      <tr>
+        <td>
+          <input id="3_1" type="text" maxlength="1" />
+        </td>
+        <td></td>
+        <td>
+          <input id="3_3" type="text" maxlength="1" />
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- BARIS 4-->
+      <tr>
+        <td>
+          <input id="4_1" type="text" maxlength="1" />
+        </td>
+        <td></td>
+        <td>
+          <input id="4_3" type="text" maxlength="1" />
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- BARIS 5-->
+      <tr>
+        <td>
+          <input id="5_1" type="text" maxlength="1" />
+        </td>
+        <td></td>
+        <td>
+          <label>3</label>
+          <input id="5_3" type="text" maxlength="1" />
+        </td>
+        <td>
+          <input id="5_4" type="text" maxlength="1" />
+        </td>
+        <td>
+          <input id="5_5" type="text" maxlength="1" />
+        </td>
+      </tr>
+    </table>
+    <button id="cek_jawaban" class="button_cek_jawaban">Cek Jawaban</button>
+    <p>POIN : <span id="poin"></span></p>
+    <script>
+      let poin = 0;
+      function cekSelHuruf(id, jawaban) {
+        document.getElementById(id).classList.remove("correct");
+        document.getElementById(id).classList.remove("wrong");
+
+        if (document.getElementById(id).value === jawaban) {
+          document.getElementById(id).classList.add("correct");
+          return true;
+        } else {
+          document.getElementById(id).classList.add("wrong");
+          return false;
+        }
+      }
+
+      document.getElementById("cek_jawaban").onclick = function () {
+        poin = 0;
+
+        let soal1 = false;
+        let soal2 = false;
+        let soal3 = false;
+        let soal4 = false;
+
+        if (cekSelHuruf("1_1", "M") === true) {
+          soal1 = true;
+          soal4 = true;
+        } else {
+          soal1 = false;
+          soal4 = false;
+        }
+
+        if (cekSelHuruf("1_2", "A") === true) {
+          soal1 = true;
+        } else {
+          soal1 = false;
+        }
+
+        if (cekSelHuruf("1_3", "K") === true) {
+          soal1 = true;
+          soal2 = true;
+        } else {
+          soal1 = false;
+          soal2 = false;
+        }
+
+        if (cekSelHuruf("1_4", "A") === true) {
+          soal1 = true;
+        } else {
+          soal1 = false;
+        }
+
+        if (cekSelHuruf("1_5", "N") === true) {
+          soal1 = true;
+        } else {
+          soal1 = false;
+        }
+
+        if (cekSelHuruf("2_1", "U") === true) {
+          soal4 = true;
+        } else {
+          soal4 = false;
+        }
+
+        if (cekSelHuruf("2_3", "U") === true) {
+          soal2 = true;
+        } else {
+          soal2 = false;
+        }
+
+        if (cekSelHuruf("3_1", "S") === true) {
+          soal4 = true;
+        } else {
+          soal4 = false;
+        }
+
+        if (cekSelHuruf("3_3", "A") === true) {
+          soal2 = true;
+        } else {
+          soal2 = false;
+        }
+
+        if (cekSelHuruf("4_1", "U") === true) {
+          soal4 = true;
+        } else {
+          soal4 = false;
+        }
+
+        if (cekSelHuruf("4_3", "S") === true) {
+          soal2 = true;
+        } else {
+          soal2 = false;
+        }
+
+        if (cekSelHuruf("5_1", "H") === true) {
+          soal4 = true;
+        } else {
+          soal4 = false;
+        }
+
+        if (cekSelHuruf("5_3", "A") === true) {
+          soal2 = true;
+          soal3 = true;
+        } else {
+          soal2 = false;
+          soal3 = false;
+        }
+
+        if (cekSelHuruf("5_4", "K") === true) {
+          soal3 = true;
+        } else {
+          soal3 = false;
+        }
+
+        if (cekSelHuruf("5_5", "U") === true) {
+          soal3 = true;
+        } else {
+          soal3 = false;
+        }
+
+        if (soal1 === true) {
+          poin = poin + 10;
+        }
+
+        if (soal2 === true) {
+          poin = poin + 10;
+        }
+
+        if (soal3 === true) {
+          poin += 10;
+        }
+
+        if (soal4 === true) {
+          poin += 10;
+        }
+        document.getElementById("poin").innerText = poin;
+
+        if (poin === 40) {
+          alert("Selamat anda menamatkan game ini");
+        }
+      };
+    </script>
+  </body>
+</html>
